@@ -20,6 +20,6 @@ fmt-check-go:
 	test -z "$$(gofmt -l go/*.go)"
 
 release-check:
+	npm ci --prefix typescript
 	node scripts/release-check.mjs
-	cd typescript && npm pack --dry-run
 	cd go && go test ./...

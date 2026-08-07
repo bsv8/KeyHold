@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -32,10 +33,39 @@ if (moduleMatch?.[1] !== goRelease?.module) {
 if (goRelease?.module !== `github.com/bsv8/KeyHold/go/v${manifest?.protocol?.goModuleMajor}`) {
   errors.push('Go module major path does not match the protocol release manifest');
 }
+if (goRelease?.tag !== `go/v${goRelease?.version}`) {
+  errors.push(`Go tag must be go/v${goRelease?.version ?? '<missing>'} for the go/ submodule`);
+}
 
 if (errors.length > 0) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
+  const typescriptDirectory = path.join(root, 'typescript');
+  try {
+    execFileSync('npm', ['run', 'build'], { cwd: typescriptDirectory, stdio: 'inherit' });
+    const packOutput = execFileSync('npm', ['pack', '--dry-run', '--json'], {
+      cwd: typescriptDirectory,
+      encoding: 'utf8',
+    });
+    const packResult = JSON.parse(packOutput)[0];
+    const packageFiles = new Set(packResult?.files?.map(({ path: filePath }) => filePath));
+    for (const requiredFile of ['dist/index.js', 'dist/index.d.ts', 'README.md', 'LICENSE']) {
+      if (!packageFiles.has(requiredFile)) {
+        errors.push(`npm package is missing ${requiredFile}`);
+      }
+    }
+    if (packResult?.name !== packageJson.name || packResult?.version !== packageJson.version) {
+      errors.push('npm dry-run package identity does not match typescript/package.json');
+    }
+  } catch (error) {
+    errors.push(`npm build/package check failed: ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  if (errors.length > 0) {
+    console.error(errors.join('\n'));
+    process.exitCode = 1;
+    process.exit();
+  }
   console.log(`release metadata is consistent for v${expectedVersion}`);
 }

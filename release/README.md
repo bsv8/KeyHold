@@ -11,9 +11,9 @@ make release-check
 正式发布前必须满足以下条件：
 
 1. 工作区干净，提交已进入远程 `main`。
-2. `v2.0.0` tag 尚不存在，并在发布提交上创建。
+2. `go/v2.0.0` tag 尚不存在，并在发布提交上创建；可选的根 `v2.0.0` tag 不能替代它。
 3. `@bsv8/keyhold@2.0.0` 尚未发布，然后发布 npm 包。
-4. Go module 使用 `github.com/bsv8/KeyHold/go/v2`，并与同一版本 tag 一起发布。
+4. Go module 使用 `github.com/bsv8/KeyHold/go/v2`，并与 `go/v2.0.0` 一起发布。
 5. 发布后分别验证 npm registry、Go proxy 和远程 CI。
 
 TypeScript 与 Go 必须作为同一个版本批次发布；任一包未完成发布，都不能将施工单标记为最终验收通过。
