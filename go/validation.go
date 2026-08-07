@@ -261,6 +261,28 @@ func requireKeys(value map[string]json.RawMessage, allowed ...string) error {
 	}
 	return nil
 }
+func requireStringKeyword(value map[string]json.RawMessage, field, expected string, code ErrorCode) error {
+	raw, ok := value[field]
+	if !ok {
+		return E(ErrInvalidDocument, "required field missing", nil)
+	}
+	var actual string
+	if err := json.Unmarshal(raw, &actual); err != nil || actual != expected {
+		return E(code, "unsupported value", err)
+	}
+	return nil
+}
+func requireIntegerKeyword(value map[string]json.RawMessage, field string, expected int, code ErrorCode) error {
+	raw, ok := value[field]
+	if !ok {
+		return E(ErrInvalidDocument, "required field missing", nil)
+	}
+	var actual int
+	if err := json.Unmarshal(raw, &actual); err != nil || actual != expected {
+		return E(code, "unsupported value", err)
+	}
+	return nil
+}
 func decodeObject(data []byte, destination any, keys ...string) error {
 	if err := strictJSON(data); err != nil {
 		return E(ErrInvalidJSON, "document is not valid JSON", err)
@@ -354,9 +376,15 @@ func Parse(data []byte) (Document, error) {
 	}
 	raw, err := objectKeys(data)
 	if err != nil {
-		return Document{}, E(ErrInvalidJSON, "document is not a JSON object", err)
+		return Document{}, E(ErrInvalidDocument, "document must be an object", err)
 	}
 	if err := requireKeys(raw, "format", "version", "label", "publicKeyHex", "keyDerivation", "cipher"); err != nil {
+		return Document{}, err
+	}
+	if err := requireStringKeyword(raw, "format", Format, ErrUnsupportedFormat); err != nil {
+		return Document{}, err
+	}
+	if err := requireIntegerKeyword(raw, "version", Version, ErrUnsupportedVersion); err != nil {
 		return Document{}, err
 	}
 	kdfRaw, err := objectKeys(raw["keyDerivation"])
@@ -366,11 +394,17 @@ func Parse(data []byte) (Document, error) {
 	if err := requireKeys(kdfRaw, "algorithm", "passwordEncoding", "iterations", "outputLengthBits", "saltB64Url"); err != nil {
 		return Document{}, err
 	}
+	if err := requireStringKeyword(kdfRaw, "algorithm", KDFAlgorithm, ErrUnsupportedAlgorithm); err != nil {
+		return Document{}, err
+	}
 	cipherRaw, err := objectKeys(raw["cipher"])
 	if err != nil {
 		return Document{}, typeError("cipher")
 	}
 	if err := requireKeys(cipherRaw, "algorithm", "keyLengthBits", "ivB64Url", "tagLengthBits", "ciphertextAndTagB64Url"); err != nil {
+		return Document{}, err
+	}
+	if err := requireStringKeyword(cipherRaw, "algorithm", CipherAlgorithm, ErrUnsupportedAlgorithm); err != nil {
 		return Document{}, err
 	}
 	var document Document

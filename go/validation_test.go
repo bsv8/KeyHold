@@ -1,6 +1,9 @@
 package keyhold
 
-import "testing"
+import (
+	"errors"
+	"testing"
+)
 
 func TestStrictValidation(t *testing.T) {
 	if _, err := Parse([]byte(`{"format":"keymaster","format":"keymaster"}`)); ErrorCodeOf(err) != ErrInvalidJSON {
@@ -22,5 +25,12 @@ func TestValidateRejectsInvalidUTF8InMemory(t *testing.T) {
 	document.Label = string([]byte{0xff})
 	if ErrorCodeOf(Validate(document)) != ErrInvalidDocument {
 		t.Fatal("invalid UTF-8 label was accepted")
+	}
+}
+
+func TestErrorsIsMatchesStableCode(t *testing.T) {
+	_, err := Parse(fixtureData(t, "invalid/unknown-field.json"))
+	if !errors.Is(err, ErrInvalidDocument) {
+		t.Fatal("errors.Is did not match invalid_document")
 	}
 }

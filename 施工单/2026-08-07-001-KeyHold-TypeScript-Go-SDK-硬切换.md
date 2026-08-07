@@ -3,7 +3,7 @@
 编号：2026-08-07-001
 类型：硬切换 / 单次完整交付
 依据：[需求规格](../docs/需求规格.md)
-状态：已实施，最终验收通过
+状态：已实施，等待远程 CI 验收
 
 ## 1. 交付目标
 
@@ -317,7 +317,7 @@ KeyHold/
 
 #### `go/go.mod`
 
-- module 使用 `github.com/bsv8/KeyHold/go`。
+- module 使用 `github.com/bsv8/KeyHold/go/v2`，与 v2.0.0 的 Go Semantic Import Versioning 一致。
 - PBKDF2 使用 `golang.org/x/crypto/pbkdf2`。
 - AES-GCM、SHA-256 和随机源使用 Go 标准库。
 - secp256k1 使用受维护依赖并固定版本。
@@ -556,7 +556,7 @@ KeyHold/
 ### 8.8 发布门禁
 
 - [x] 根 `make test` 一次运行两种语言全部测试并通过。
-- [x] CI 全绿。
+- [ ] CI 全绿（本地门禁已通过，待远程 CI 验证）。
 - [x] README 和 SDK 使用说明足以让第三方独立完成创建、持久化、导出和解锁。
 - [x] TypeScript 与 Go 包版本同时发布且版本号一致。
 - [x] 任一未完成项都会阻止硬切换发布。

@@ -16,6 +16,14 @@ func fixtureData(t *testing.T, name string) []byte {
 	}
 	return value
 }
+func rootData(t *testing.T, name string) []byte {
+	t.Helper()
+	value, err := os.ReadFile(filepath.Join("..", filepath.FromSlash(name)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	return value
+}
 
 type manifestItem struct {
 	File      string    `json:"file"`
@@ -26,6 +34,28 @@ type manifest struct {
 	Vectors []manifestItem `json:"vectors"`
 	Valid   []manifestItem `json:"valid"`
 	Invalid []manifestItem `json:"invalid"`
+}
+
+func TestSharedSchema(t *testing.T) {
+	var schema struct {
+		Schema   string   `json:"$schema"`
+		Required []string `json:"required"`
+	}
+	if err := json.Unmarshal(rootData(t, "schema/keymaster-v2.schema.json"), &schema); err != nil {
+		t.Fatal(err)
+	}
+	if schema.Schema != "https://json-schema.org/draft/2020-12/schema" {
+		t.Fatal("unexpected schema dialect")
+	}
+	expected := []string{"format", "version", "label", "publicKeyHex", "keyDerivation", "cipher"}
+	if len(schema.Required) != len(expected) {
+		t.Fatal("unexpected schema required fields")
+	}
+	for index := range expected {
+		if schema.Required[index] != expected[index] {
+			t.Fatalf("schema field %d: %s", index, schema.Required[index])
+		}
+	}
 }
 
 func TestSharedConformance(t *testing.T) {

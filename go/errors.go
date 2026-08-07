@@ -4,6 +4,8 @@ import "fmt"
 
 type ErrorCode string
 
+func (c ErrorCode) Error() string { return string(c) }
+
 const (
 	ErrInvalidJSON          ErrorCode = "invalid_json"
 	ErrUnsupportedFormat    ErrorCode = "unsupported_format"
@@ -28,6 +30,16 @@ func (e *KeyHoldError) Error() string {
 	return string(e.Code)
 }
 func (e *KeyHoldError) Unwrap() error { return e.Cause }
+func (e *KeyHoldError) Is(target error) bool {
+	switch value := target.(type) {
+	case ErrorCode:
+		return e.Code == value
+	case *KeyHoldError:
+		return value != nil && e.Code == value.Code
+	default:
+		return false
+	}
+}
 func E(code ErrorCode, message string, cause error) *KeyHoldError {
 	return &KeyHoldError{Code: code, Message: message, Cause: cause}
 }

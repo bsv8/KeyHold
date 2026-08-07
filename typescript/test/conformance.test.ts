@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fixture, jsonFixture } from "./helpers.js";
+import { fixture, jsonFixture, schemaFixture } from "./helpers.js";
 import { parseDocument } from "../src/validation.js";
 import { unlockDocument } from "../src/document.js";
 import {
@@ -21,6 +21,21 @@ type Manifest = {
 };
 describe("shared conformance fixtures", () => {
   const manifest = jsonFixture<Manifest>("manifest.json");
+  it("loads the shared JSON Schema", () => {
+    const schema = jsonFixture<{ $schema: string; required: string[] }>(
+      "../schema/keymaster-v2.schema.json",
+    );
+    expect(schema.$schema).toBe("https://json-schema.org/draft/2020-12/schema");
+    expect(schema.required).toEqual([
+      "format",
+      "version",
+      "label",
+      "publicKeyHex",
+      "keyDerivation",
+      "cipher",
+    ]);
+    expect(schemaFixture()).toContain('"keymaster"');
+  });
   for (const item of manifest.vectors)
     it(`consumes ${item.file}`, async () => {
       const vector = jsonFixture<{

@@ -9,3 +9,11 @@ export function fixture(path: string): string {
 export function jsonFixture<T>(path: string): T {
   return JSON.parse(fixture(path)) as T;
 }
+export function schemaFixture(): string {
+  return readFileSync(
+    fileURLToPath(
+      new URL(`../../schema/keymaster-v2.schema.json`, import.meta.url),
+    ),
+    "utf8",
+  );
+}
