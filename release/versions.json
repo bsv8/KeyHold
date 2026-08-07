@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "protocol": {
+    "id": "keymaster",
+    "version": 2,
+    "goModuleMajor": 2
+  },
+  "packages": {
+    "npm": {
+      "name": "@bsv8/keyhold",
+      "version": "2.0.0"
+    },
+    "go": {
+      "module": "github.com/bsv8/KeyHold/go/v2",
+      "version": "2.0.0"
+    }
+  }
+}

@@ -524,7 +524,7 @@ KeyHold/
 
 ### 8.5 跨语言一致性
 
-- [x] 两种 SDK 加载同一 schema、manifest 和 fixtures。
+- [x] 两种 SDK 读取并抽查同一 schema、manifest 和 fixtures。
 - [x] 固定输入产生相同 PBKDF2 key、public key、ciphertext 和 tag。
 - [x] 对同一固定加密状态，两种 SDK 组装出语义相同的 Document。
 - [x] 固定随机材料下，两种导出路径生成相同 Document。
@@ -558,5 +558,5 @@ KeyHold/
 - [x] 根 `make test` 一次运行两种语言全部测试并通过。
 - [ ] CI 全绿（本地门禁已通过，待远程 CI 验证）。
 - [x] README 和 SDK 使用说明足以让第三方独立完成创建、持久化、导出和解锁。
-- [x] TypeScript 与 Go 包版本同时发布且版本号一致。
+- [ ] TypeScript 与 Go 包版本同时发布且版本号一致（尚未完成远程推送、Git tag 和 registry 发布）。
 - [x] 任一未完成项都会阻止硬切换发布。

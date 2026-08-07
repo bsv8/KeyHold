@@ -1,4 +1,4 @@
-.PHONY: test test-ts test-go conformance build-ts fmt-check-go
+.PHONY: test test-ts test-go conformance build-ts fmt-check-go release-check
 
 test: test-ts test-go
 
@@ -18,3 +18,8 @@ build-ts:
 
 fmt-check-go:
 	test -z "$$(gofmt -l go/*.go)"
+
+release-check:
+	node scripts/release-check.mjs
+	cd typescript && npm pack --dry-run
+	cd go && go test ./...

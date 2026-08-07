@@ -21,7 +21,7 @@ type Manifest = {
 };
 describe("shared conformance fixtures", () => {
   const manifest = jsonFixture<Manifest>("manifest.json");
-  it("loads the shared JSON Schema", () => {
+  it("reads and smoke-checks the shared JSON Schema", () => {
     const schema = jsonFixture<{ $schema: string; required: string[] }>(
       "../schema/keymaster-v2.schema.json",
     );

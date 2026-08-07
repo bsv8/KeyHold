@@ -36,7 +36,7 @@ type manifest struct {
 	Invalid []manifestItem `json:"invalid"`
 }
 
-func TestSharedSchema(t *testing.T) {
+func TestSharedSchemaSmokeCheck(t *testing.T) {
 	var schema struct {
 		Schema   string   `json:"$schema"`
 		Required []string `json:"required"`
