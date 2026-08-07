@@ -7,7 +7,7 @@
   },
   "packages": {
     "npm": {
-      "name": "@bsv8/keyhold",
+      "name": "keyhold",
       "version": "2.0.0"
     },
     "go": {

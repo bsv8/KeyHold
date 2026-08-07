@@ -233,7 +233,7 @@ KeyHold/
 
 #### `typescript/package.json`
 
-- 包名 `@bsv8/keyhold`，使用 ESM。
+- 包名 `keyhold`，使用 ESM，不依赖 npm organization scope。
 - 导出编译 JS、类型声明和 sourcemap。
 - PBKDF2-HMAC-SHA-256、AES-GCM 和随机源使用 WebCrypto；生产依赖只增加受维护的 secp256k1 库。
 - 测试使用 Vitest。

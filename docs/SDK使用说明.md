@@ -13,7 +13,7 @@ import {
   parse,
   unlock,
   serialize,
-} from '@bsv8/keyhold'
+} from 'keyhold'
 
 const privateKey = new Uint8Array(32)
 privateKey[31] = 1 // 仅测试
@@ -36,7 +36,7 @@ const sameDocument = serialize(document)
 已有存储状态且已确认完全遵循 KeyHold 语义时，可以直接组装：
 
 ```ts
-import { exportEncryptedState } from '@bsv8/keyhold'
+import { exportEncryptedState } from 'keyhold'
 
 const json = exportEncryptedState({
   label: 'Personal key',

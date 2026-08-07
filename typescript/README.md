@@ -1,9 +1,9 @@
-# @bsv8/keyhold
+# keyhold
 
 TypeScript SDK for the KeyHold keymaster v2 format.
 
 ```ts
-import { exportPrivateKey, recommendedParameters, parse, unlock } from "@bsv8/keyhold";
+import { exportPrivateKey, recommendedParameters, parse, unlock } from "keyhold";
 
 const json = await exportPrivateKey({
   privateKey,

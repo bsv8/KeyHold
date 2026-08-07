@@ -12,7 +12,7 @@ make release-check
 
 1. 工作区干净，提交已进入远程 `main`。
 2. `go/v2.0.0` tag 尚不存在，并在发布提交上创建；可选的根 `v2.0.0` tag 不能替代它。
-3. `@bsv8/keyhold@2.0.0` 尚未发布，然后发布 npm 包。
+3. `keyhold@2.0.0` 尚未发布，然后发布 npm 包。
 4. Go module 使用 `github.com/bsv8/KeyHold/go/v2`，并与 `go/v2.0.0` 一起发布。
 5. 发布后分别验证 npm registry、Go proxy 和远程 CI。
 
