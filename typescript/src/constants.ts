@@ -1,0 +1,19 @@
+export const FORMAT = "keymaster" as const;
+export const VERSION = 2 as const;
+export const KDF_ALGORITHM = "pbkdf2-hmac-sha-256" as const;
+export const PASSWORD_ENCODING = "utf-8" as const;
+export const CIPHER_ALGORITHM = "aes-gcm" as const;
+export const KEY_LENGTH_BITS = 256 as const;
+export const OUTPUT_LENGTH_BITS = 256 as const;
+export const TAG_LENGTH_BITS = 128 as const;
+export const MIN_ITERATIONS = 1 as const;
+export const MAX_ITERATIONS = 2_147_483_647 as const;
+export const RECOMMENDED_ITERATIONS = 600_000 as const;
+export const SALT_LENGTH_BYTES = 16 as const;
+export const IV_LENGTH_BYTES = 12 as const;
+export const PRIVATE_KEY_LENGTH_BYTES = 32 as const;
+export const PUBLIC_KEY_LENGTH_BYTES = 33 as const;
+export const CIPHERTEXT_LENGTH_BYTES = 32 as const;
+export const TAG_LENGTH_BYTES = 16 as const;
+export const CIPHERTEXT_AND_TAG_LENGTH_BYTES =
+  CIPHERTEXT_LENGTH_BYTES + TAG_LENGTH_BYTES;

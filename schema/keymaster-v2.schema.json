@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bsv8/KeyHold/schema/keymaster-v2.schema.json",
+  "title": "KeyHold keymaster v2 document",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "version", "label", "publicKeyHex", "keyDerivation", "cipher"],
+  "properties": {
+    "format": { "const": "keymaster" },
+    "version": { "type": "integer", "const": 2 },
+    "label": { "type": "string", "minLength": 1 },
+    "publicKeyHex": { "type": "string", "pattern": "^[0-9a-f]{66}$" },
+    "keyDerivation": { "$ref": "#/$defs/keyDerivation" },
+    "cipher": { "$ref": "#/$defs/cipher" }
+  },
+  "$defs": {
+    "keyDerivation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["algorithm", "passwordEncoding", "iterations", "outputLengthBits", "saltB64Url"],
+      "properties": {
+        "algorithm": { "const": "pbkdf2-hmac-sha-256" }, "passwordEncoding": { "const": "utf-8" },
+        "iterations": { "type": "integer", "minimum": 1, "maximum": 2147483647 },
+        "outputLengthBits": { "const": 256 }, "saltB64Url": { "type": "string" }
+      }
+    },
+    "cipher": {
+      "type": "object", "additionalProperties": false,
+      "required": ["algorithm", "keyLengthBits", "ivB64Url", "tagLengthBits", "ciphertextAndTagB64Url"],
+      "properties": {
+        "algorithm": { "const": "aes-gcm" }, "keyLengthBits": { "const": 256 },
+        "ivB64Url": { "type": "string" }, "tagLengthBits": { "const": 128 },
+        "ciphertextAndTagB64Url": { "type": "string" }
+      }
+    }
+  }
+}

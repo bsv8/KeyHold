@@ -141,3 +141,7 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# KeyHold local dependencies and build output
+typescript/node_modules/
+typescript/dist/

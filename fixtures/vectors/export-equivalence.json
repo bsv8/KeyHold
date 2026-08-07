@@ -1,0 +1,9 @@
+{
+  "privateKeyHex": "0000000000000000000000000000000000000000000000000000000000000001",
+  "password": "päss🔑",
+  "label": "Personal key",
+  "iterations": 1000,
+  "saltB64Url": "AAECAwQFBgcICQoLDA0ODw",
+  "ivB64Url": "EBESExQVFhcYGRob",
+  "ciphertextAndTagB64Url": "KbfCVKTCwiQsaWuRpI3MJSmFB5fdkLC5NgJMc4463ZXACLqMii-0PjKoYCSyldOL"
+}

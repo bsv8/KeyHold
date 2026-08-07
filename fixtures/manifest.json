@@ -1,0 +1,29 @@
+{
+  "format": "keymaster",
+  "version": 2,
+  "publicTestMaterial": true,
+  "vectors": [
+    { "id": "password", "file": "vectors/password.json", "purpose": "PBKDF2-HMAC-SHA-256 and AES-256-GCM fixed vector" },
+    { "id": "unicode-password", "file": "vectors/unicode-password.json", "purpose": "UTF-8 password without normalization" },
+    { "id": "export-equivalence", "file": "vectors/export-equivalence.json", "purpose": "encrypted-state and plaintext export share one document" }
+  ],
+  "valid": [
+    { "id": "basic", "file": "valid/basic.json", "parse": "success", "validate": "success", "unlock": "password" },
+    { "id": "custom-iterations", "file": "valid/custom-iterations.json", "parse": "success", "validate": "success" },
+    { "id": "unicode-label", "file": "valid/unicode-label.json", "parse": "success", "validate": "success" }
+  ],
+  "invalid": [
+    { "id": "unsupported-format", "file": "invalid/unsupported-format.json", "parse": "error", "errorCode": "unsupported_format" },
+    { "id": "unsupported-version", "file": "invalid/unsupported-version.json", "parse": "error", "errorCode": "unsupported_version" },
+    { "id": "unknown-field", "file": "invalid/unknown-field.json", "parse": "error", "errorCode": "invalid_document" },
+    { "id": "duplicate-field", "file": "invalid/duplicate-field.json", "parse": "error", "errorCode": "invalid_json" },
+    { "id": "invalid-public-key", "file": "invalid/invalid-public-key.json", "parse": "error", "errorCode": "invalid_document" },
+    { "id": "invalid-base64url", "file": "invalid/invalid-base64url.json", "parse": "error", "errorCode": "invalid_document" },
+    { "id": "invalid-kdf", "file": "invalid/invalid-kdf.json", "parse": "error", "errorCode": "invalid_document" },
+    { "id": "invalid-output-length", "file": "invalid/invalid-output-length.json", "parse": "error", "errorCode": "invalid_document" },
+    { "id": "invalid-cipher", "file": "invalid/invalid-cipher.json", "parse": "error", "errorCode": "invalid_document" },
+    { "id": "corrupted-ciphertext", "file": "invalid/corrupted-ciphertext.json", "parse": "success", "validate": "success", "unlock": "unlock_failed" },
+    { "id": "corrupted-tag", "file": "invalid/corrupted-tag.json", "parse": "success", "validate": "success", "unlock": "unlock_failed" },
+    { "id": "public-key-mismatch", "file": "invalid/public-key-mismatch.json", "parse": "success", "validate": "success", "unlock": "unlock_failed" }
+  ]
+}
