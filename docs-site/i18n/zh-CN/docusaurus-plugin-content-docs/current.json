@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.guide.category.Start here": {
+    "message": "从这里开始",
+    "description": "The label for category 'Start here' in sidebar 'guide'"
+  },
+  "sidebar.guide.category.Workflows": {
+    "message": "工作流",
+    "description": "The label for category 'Workflows' in sidebar 'guide'"
+  },
+  "sidebar.concepts.category.KeyHold foundations": {
+    "message": "KeyHold 基础",
+    "description": "The label for category 'KeyHold foundations' in sidebar 'concepts'"
+  },
+  "sidebar.api.category.SDK API reference": {
+    "message": "SDK API 参考",
+    "description": "The label for category 'SDK API reference' in sidebar 'api'"
+  },
+  "sidebar.api.category.TypeScript API": {
+    "message": "TypeScript API",
+    "description": "The label for category 'TypeScript API' in sidebar 'api'"
+  },
+  "sidebar.api.category.Go API": {
+    "message": "Go API",
+    "description": "The label for category 'Go API' in sidebar 'api'"
+  }
+}

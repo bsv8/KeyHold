@@ -1,0 +1,929 @@
+{
+  "api": {
+    "typescript.classes.KeyHoldError": {
+      "source": "Error thrown by public SDK operations.",
+      "translation": "表示带稳定错误码和可选原因的 KeyHold 错误。"
+    },
+    "typescript.classes.KeyHoldError.fields.code": {
+      "source": "Property code of KeyHoldError.",
+      "translation": "KeyHoldError 的 code 字段。"
+    },
+    "typescript.classes.KeyHoldError.fields.name": {
+      "source": "Property name of KeyHoldError.",
+      "translation": "KeyHoldError 的 name 字段。"
+    },
+    "typescript.types.Cipher": {
+      "source": "A validated KeyHold cipher section.",
+      "translation": "表示经过验证的 AES-GCM 密文区段。"
+    },
+    "typescript.types.Cipher.fields.algorithm": {
+      "source": "Property algorithm of Cipher.",
+      "translation": "Cipher 的 algorithm 字段。"
+    },
+    "typescript.types.Cipher.fields.ciphertextAndTagB64Url": {
+      "source": "Property ciphertextAndTagB64Url of Cipher.",
+      "translation": "Cipher 的 ciphertextAndTagB64Url 字段。"
+    },
+    "typescript.types.Cipher.fields.ivB64Url": {
+      "source": "Property ivB64Url of Cipher.",
+      "translation": "Cipher 的 ivB64Url 字段。"
+    },
+    "typescript.types.Cipher.fields.keyLengthBits": {
+      "source": "Property keyLengthBits of Cipher.",
+      "translation": "Cipher 的 keyLengthBits 字段。"
+    },
+    "typescript.types.Cipher.fields.tagLengthBits": {
+      "source": "Property tagLengthBits of Cipher.",
+      "translation": "Cipher 的 tagLengthBits 字段。"
+    },
+    "typescript.types.CipherParameters": {
+      "source": "Explicit parameters for AES-GCM during private-key export.",
+      "translation": "定义 AES-GCM 导出所需的显式参数。"
+    },
+    "typescript.types.CipherParameters.fields.algorithm": {
+      "source": "Property algorithm of CipherParameters.",
+      "translation": "CipherParameters 的 algorithm 字段。"
+    },
+    "typescript.types.CipherParameters.fields.keyLengthBits": {
+      "source": "Property keyLengthBits of CipherParameters.",
+      "translation": "CipherParameters 的 keyLengthBits 字段。"
+    },
+    "typescript.types.CipherParameters.fields.tagLengthBits": {
+      "source": "Property tagLengthBits of CipherParameters.",
+      "translation": "CipherParameters 的 tagLengthBits 字段。"
+    },
+    "typescript.types.Document": {
+      "source": "The complete JSON document represented by the SDK.",
+      "translation": "表示完整、已验证的 KeyHold 文档。"
+    },
+    "typescript.types.Document.fields.cipher": {
+      "source": "Property cipher of Document.",
+      "translation": "Document 的 cipher 字段。"
+    },
+    "typescript.types.Document.fields.format": {
+      "source": "Property format of Document.",
+      "translation": "Document 的 format 字段。"
+    },
+    "typescript.types.Document.fields.keyDerivation": {
+      "source": "Property keyDerivation of Document.",
+      "translation": "Document 的 keyDerivation 字段。"
+    },
+    "typescript.types.Document.fields.label": {
+      "source": "Property label of Document.",
+      "translation": "Document 的 label 字段。"
+    },
+    "typescript.types.Document.fields.publicKeyHex": {
+      "source": "Property publicKeyHex of Document.",
+      "translation": "Document 的 publicKeyHex 字段。"
+    },
+    "typescript.types.Document.fields.version": {
+      "source": "Property version of Document.",
+      "translation": "Document 的 version 字段。"
+    },
+    "typescript.types.DocumentSummary": {
+      "source": "Public, non-secret metadata extracted from a document.",
+      "translation": "表示文档的公开、非秘密摘要。"
+    },
+    "typescript.types.DocumentSummary.fields.format": {
+      "source": "Property format of DocumentSummary.",
+      "translation": "DocumentSummary 的 format 字段。"
+    },
+    "typescript.types.DocumentSummary.fields.label": {
+      "source": "Property label of DocumentSummary.",
+      "translation": "DocumentSummary 的 label 字段。"
+    },
+    "typescript.types.DocumentSummary.fields.publicKeyHex": {
+      "source": "Property publicKeyHex of DocumentSummary.",
+      "translation": "DocumentSummary 的 publicKeyHex 字段。"
+    },
+    "typescript.types.DocumentSummary.fields.version": {
+      "source": "Property version of DocumentSummary.",
+      "translation": "DocumentSummary 的 version 字段。"
+    },
+    "typescript.types.EncryptedStateInput": {
+      "source": "Already-encrypted state that can be serialized without decryption.",
+      "translation": "表示无需解密即可序列化的已加密状态。"
+    },
+    "typescript.types.EncryptedStateInput.fields.cipher": {
+      "source": "Property cipher of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 cipher 字段。"
+    },
+    "typescript.types.EncryptedStateInput.fields.keyDerivation": {
+      "source": "Property keyDerivation of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 keyDerivation 字段。"
+    },
+    "typescript.types.EncryptedStateInput.fields.label": {
+      "source": "Property label of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 label 字段。"
+    },
+    "typescript.types.EncryptedStateInput.fields.publicKeyHex": {
+      "source": "Property publicKeyHex of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 publicKeyHex 字段。"
+    },
+    "typescript.types.KeyDerivation": {
+      "source": "A validated KeyHold key-derivation section.",
+      "translation": "表示经过验证的密码派生区段。"
+    },
+    "typescript.types.KeyDerivation.fields.algorithm": {
+      "source": "Property algorithm of KeyDerivation.",
+      "translation": "KeyDerivation 的 algorithm 字段。"
+    },
+    "typescript.types.KeyDerivation.fields.iterations": {
+      "source": "Property iterations of KeyDerivation.",
+      "translation": "KeyDerivation 的 iterations 字段。"
+    },
+    "typescript.types.KeyDerivation.fields.outputLengthBits": {
+      "source": "Property outputLengthBits of KeyDerivation.",
+      "translation": "KeyDerivation 的 outputLengthBits 字段。"
+    },
+    "typescript.types.KeyDerivation.fields.passwordEncoding": {
+      "source": "Property passwordEncoding of KeyDerivation.",
+      "translation": "KeyDerivation 的 passwordEncoding 字段。"
+    },
+    "typescript.types.KeyDerivation.fields.saltB64Url": {
+      "source": "Property saltB64Url of KeyDerivation.",
+      "translation": "KeyDerivation 的 saltB64Url 字段。"
+    },
+    "typescript.types.KeyDerivationParameters": {
+      "source": "Explicit parameters for PBKDF2 during private-key export.",
+      "translation": "定义 PBKDF2 导出所需的显式参数。"
+    },
+    "typescript.types.KeyDerivationParameters.fields.algorithm": {
+      "source": "Property algorithm of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 algorithm 字段。"
+    },
+    "typescript.types.KeyDerivationParameters.fields.iterations": {
+      "source": "Property iterations of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 iterations 字段。"
+    },
+    "typescript.types.KeyDerivationParameters.fields.outputLengthBits": {
+      "source": "Property outputLengthBits of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 outputLengthBits 字段。"
+    },
+    "typescript.types.KeyDerivationParameters.fields.passwordEncoding": {
+      "source": "Property passwordEncoding of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 passwordEncoding 字段。"
+    },
+    "typescript.types.PrivateKeyExportInput": {
+      "source": "Plaintext private-key input used to create a new encrypted document.",
+      "translation": "表示创建加密文档所需的明文私钥输入。"
+    },
+    "typescript.types.PrivateKeyExportInput.fields.label": {
+      "source": "Property label of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 label 字段。"
+    },
+    "typescript.types.PrivateKeyExportInput.fields.parameters": {
+      "source": "Property parameters of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 parameters 字段。"
+    },
+    "typescript.types.PrivateKeyExportInput.fields.password": {
+      "source": "Property password of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 password 字段。"
+    },
+    "typescript.types.PrivateKeyExportInput.fields.privateKey": {
+      "source": "Property privateKey of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 privateKey 字段。"
+    },
+    "typescript.types.RecommendedParameters": {
+      "source": "The complete parameter set required by private-key export.",
+      "translation": "返回推荐的显式导出参数。"
+    },
+    "typescript.types.RecommendedParameters.fields.cipher": {
+      "source": "Property cipher of RecommendedParameters.",
+      "translation": "RecommendedParameters 的 cipher 字段。"
+    },
+    "typescript.types.RecommendedParameters.fields.keyDerivation": {
+      "source": "Property keyDerivation of RecommendedParameters.",
+      "translation": "RecommendedParameters 的 keyDerivation 字段。"
+    },
+    "typescript.types.UnlockResult": {
+      "source": "The private key and public key recovered after a successful unlock.",
+      "translation": "表示解锁后恢复的私钥和匹配公钥。"
+    },
+    "typescript.types.UnlockResult.fields.privateKey": {
+      "source": "Property privateKey of UnlockResult.",
+      "translation": "UnlockResult 的 privateKey 字段。"
+    },
+    "typescript.types.UnlockResult.fields.publicKeyHex": {
+      "source": "Property publicKeyHex of UnlockResult.",
+      "translation": "UnlockResult 的 publicKeyHex 字段。"
+    },
+    "typescript.constants.ERROR_CODES": {
+      "source": "Stable error codes exposed by the KeyHold SDK.",
+      "translation": "列出 SDK 对外暴露的稳定错误码。"
+    },
+    "typescript.constants.FORMAT": {
+      "source": "The KeyHold document format discriminator.",
+      "translation": "表示 KeyHold 文档格式标识。"
+    },
+    "typescript.constants.parse": {
+      "source": "Public variable parse.",
+      "translation": "解析并验证 KeyHold 文档。"
+    },
+    "typescript.constants.RECOMMENDED_ITERATIONS": {
+      "source": "The recommended PBKDF2 iteration count for new exports.",
+      "translation": "表示新导出推荐使用的 PBKDF2 迭代次数。"
+    },
+    "typescript.constants.serialize": {
+      "source": "Public variable serialize.",
+      "translation": "将文档序列化为规范 JSON。"
+    },
+    "typescript.constants.unlock": {
+      "source": "Public variable unlock.",
+      "translation": "解密文档并校验恢复的私钥。"
+    },
+    "typescript.constants.validate": {
+      "source": "Public variable validate.",
+      "translation": "验证 KeyHold 文档结构。"
+    },
+    "typescript.constants.VERSION": {
+      "source": "The supported KeyHold document version.",
+      "translation": "表示支持的 KeyHold 文档版本。"
+    },
+    "typescript.functions.exportEncryptedState": {
+      "source": "Serialize state that is already encrypted using KeyHold semantics.",
+      "translation": "序列化已经加密的状态，无需解密私钥。"
+    },
+    "typescript.functions.exportEncryptedState.parameters.input": {
+      "source": "Parameter input of exportEncryptedState.",
+      "translation": "exportEncryptedState 的 input 参数。"
+    },
+    "typescript.functions.exportPrivateKey": {
+      "source": "Encrypt a private key with a password and return a complete JSON document.",
+      "translation": "使用密码加密私钥并返回完整 JSON 文档。"
+    },
+    "typescript.functions.exportPrivateKey.parameters.input": {
+      "source": "Parameter input of exportPrivateKey.",
+      "translation": "exportPrivateKey 的 input 参数。"
+    },
+    "typescript.functions.isKeyHoldError": {
+      "source": "Return true when a value is a KeyHold SDK error.",
+      "translation": "判断一个值是否为 KeyHold SDK 错误。"
+    },
+    "typescript.functions.isKeyHoldError.parameters.value": {
+      "source": "Parameter value of isKeyHoldError.",
+      "translation": "isKeyHoldError 的 value 参数。"
+    },
+    "typescript.functions.parseDocument": {
+      "source": "Parse JSON text or UTF-8 bytes and validate the resulting document.",
+      "translation": "解析 JSON 文本或 UTF-8 字节并验证文档。"
+    },
+    "typescript.functions.parseDocument.parameters.input": {
+      "source": "Parameter input of parseDocument.",
+      "translation": "parseDocument 的 input 参数。"
+    },
+    "typescript.functions.recommendedParameters": {
+      "source": "Return the SDK’s recommended explicit export parameters.",
+      "translation": "返回 SDK 推荐的显式导出参数。"
+    },
+    "typescript.functions.serializeDocument": {
+      "source": "Serialize a validated document to canonical JSON.",
+      "translation": "将已验证文档序列化为规范 JSON。"
+    },
+    "typescript.functions.serializeDocument.parameters.document": {
+      "source": "Parameter document of serializeDocument.",
+      "translation": "serializeDocument 的 document 参数。"
+    },
+    "typescript.functions.summary": {
+      "source": "Return the non-secret metadata of a validated document.",
+      "translation": "返回已验证文档的非秘密元数据。"
+    },
+    "typescript.functions.summary.parameters.document": {
+      "source": "Parameter document of summary.",
+      "translation": "summary 的 document 参数。"
+    },
+    "typescript.functions.unlockDocument": {
+      "source": "Decrypt and validate the private key contained in a document.",
+      "translation": "解密并验证文档中包含的私钥。"
+    },
+    "typescript.functions.unlockDocument.parameters.document": {
+      "source": "Parameter document of unlockDocument.",
+      "translation": "unlockDocument 的 document 参数。"
+    },
+    "typescript.functions.unlockDocument.parameters.password": {
+      "source": "Parameter password of unlockDocument.",
+      "translation": "unlockDocument 的 password 参数。"
+    },
+    "typescript.functions.validateDocument": {
+      "source": "Validate an in-memory value and return the normalized KeyHold document.",
+      "translation": "验证内存中的值并返回规范化文档。"
+    },
+    "typescript.functions.validateDocument.parameters.value": {
+      "source": "Parameter value of validateDocument.",
+      "translation": "validateDocument 的 value 参数。"
+    },
+    "go.constants.Format": {
+      "source": "Format is the KeyHold document format discriminator.",
+      "translation": "表示文档格式标识。"
+    },
+    "go.constants.Version": {
+      "source": "Version is the supported KeyHold document version.",
+      "translation": "表示支持的文档版本。"
+    },
+    "go.constants.KDFAlgorithm": {
+      "source": "KDFAlgorithm identifies the password-based key derivation algorithm.",
+      "translation": "表示密码派生算法。"
+    },
+    "go.constants.PasswordEncoding": {
+      "source": "PasswordEncoding is an exported Go constant.",
+      "translation": "表示密码编码方式。"
+    },
+    "go.constants.CipherAlgorithm": {
+      "source": "CipherAlgorithm identifies the authenticated encryption algorithm.",
+      "translation": "表示密码算法。"
+    },
+    "go.constants.KeyLengthBits": {
+      "source": "KeyLengthBits is an exported Go constant.",
+      "translation": "表示派生密钥长度。"
+    },
+    "go.constants.OutputLengthBits": {
+      "source": "OutputLengthBits is an exported Go constant.",
+      "translation": "表示派生输出长度。"
+    },
+    "go.constants.TagLengthBits": {
+      "source": "TagLengthBits is an exported Go constant.",
+      "translation": "表示认证标签长度。"
+    },
+    "go.constants.MinIterations": {
+      "source": "MinIterations is an exported Go constant.",
+      "translation": "表示 PBKDF2 最小迭代次数。"
+    },
+    "go.constants.MaxIterations": {
+      "source": "MaxIterations is an exported Go constant.",
+      "translation": "表示 PBKDF2 最大迭代次数。"
+    },
+    "go.constants.RecommendedIterations": {
+      "source": "RecommendedIterations is an exported Go constant.",
+      "translation": "表示推荐的 PBKDF2 迭代次数。"
+    },
+    "go.constants.SaltLengthBytes": {
+      "source": "SaltLengthBytes is an exported Go constant.",
+      "translation": "表示盐值长度。"
+    },
+    "go.constants.IVLengthBytes": {
+      "source": "IVLengthBytes is an exported Go constant.",
+      "translation": "表示初始化向量长度。"
+    },
+    "go.constants.PrivateKeyLengthBytes": {
+      "source": "PrivateKeyLengthBytes is an exported Go constant.",
+      "translation": "表示私钥长度。"
+    },
+    "go.constants.PublicKeyLengthBytes": {
+      "source": "PublicKeyLengthBytes is an exported Go constant.",
+      "translation": "表示公钥长度。"
+    },
+    "go.constants.CiphertextAndTagLengthBytes": {
+      "source": "CiphertextAndTagLengthBytes is an exported Go constant.",
+      "translation": "表示密文和认证标签的总长度。"
+    },
+    "go.constants.TagLengthBytes": {
+      "source": "TagLengthBytes is an exported Go constant.",
+      "translation": "表示认证标签长度。"
+    },
+    "go.functions.EncodeBase64URL": {
+      "source": "EncodeBase64URL encodes bytes as unpadded canonical base64url.",
+      "translation": "将字节编码为规范的无填充 base64url。"
+    },
+    "go.functions.EncodeBase64URL.parameters.value": {
+      "source": "Parameter value of EncodeBase64URL.",
+      "translation": "EncodeBase64URL 的 value 参数。"
+    },
+    "go.functions.DecodeBase64URL": {
+      "source": "DecodeBase64URL decodes an unpadded canonical base64url value.",
+      "translation": "解码规范的无填充 base64url 值。"
+    },
+    "go.functions.DecodeBase64URL.parameters.value": {
+      "source": "Parameter value of DecodeBase64URL.",
+      "translation": "DecodeBase64URL 的 value 参数。"
+    },
+    "go.functions.DecodeBase64URL.parameters.field": {
+      "source": "Parameter field of DecodeBase64URL.",
+      "translation": "DecodeBase64URL 的 field 参数。"
+    },
+    "go.functions.EncodeHex": {
+      "source": "EncodeHex encodes bytes as lowercase hexadecimal.",
+      "translation": "将字节编码为小写十六进制。"
+    },
+    "go.functions.EncodeHex.parameters.value": {
+      "source": "Parameter value of EncodeHex.",
+      "translation": "EncodeHex 的 value 参数。"
+    },
+    "go.functions.DecodeHex": {
+      "source": "DecodeHex decodes a lowercase hexadecimal value.",
+      "translation": "解码小写十六进制值。"
+    },
+    "go.functions.DecodeHex.parameters.value": {
+      "source": "Parameter value of DecodeHex.",
+      "translation": "DecodeHex 的 value 参数。"
+    },
+    "go.functions.DecodeHex.parameters.field": {
+      "source": "Parameter field of DecodeHex.",
+      "translation": "DecodeHex 的 field 参数。"
+    },
+    "go.types.ErrorCode": {
+      "source": "ErrorCode is a stable category of KeyHold failure.",
+      "translation": "表示 KeyHold 失败的稳定分类。"
+    },
+    "go.types.ErrorCode.methods.Error": {
+      "source": "Method Error of ErrorCode.",
+      "translation": "ErrorCode 的 Error 方法。"
+    },
+    "go.constants.ErrInvalidJSON": {
+      "source": "ErrInvalidJSON is an exported Go constant.",
+      "translation": "表示 JSON 无效错误的稳定错误码。"
+    },
+    "go.constants.ErrUnsupportedFormat": {
+      "source": "ErrUnsupportedFormat is an exported Go constant.",
+      "translation": "表示文档格式不支持错误的稳定错误码。"
+    },
+    "go.constants.ErrUnsupportedVersion": {
+      "source": "ErrUnsupportedVersion is an exported Go constant.",
+      "translation": "表示文档版本不支持错误的稳定错误码。"
+    },
+    "go.constants.ErrInvalidDocument": {
+      "source": "ErrInvalidDocument is an exported Go constant.",
+      "translation": "表示文档无效错误的稳定错误码。"
+    },
+    "go.constants.ErrInvalidParameter": {
+      "source": "ErrInvalidParameter is an exported Go constant.",
+      "translation": "表示传入参数无效错误的稳定错误码。"
+    },
+    "go.constants.ErrUnsupportedAlgorithm": {
+      "source": "ErrUnsupportedAlgorithm is an exported Go constant.",
+      "translation": "表示密码算法不支持错误的稳定错误码。"
+    },
+    "go.constants.ErrInvalidPrivateKey": {
+      "source": "ErrInvalidPrivateKey is an exported Go constant.",
+      "translation": "表示私钥无效错误的稳定错误码。"
+    },
+    "go.constants.ErrUnlockFailed": {
+      "source": "ErrUnlockFailed is an exported Go constant.",
+      "translation": "表示解锁失败错误的稳定错误码。"
+    },
+    "go.types.KeyHoldError": {
+      "source": "KeyHoldError is an SDK error with a stable code and optional cause.",
+      "translation": "表示带稳定错误码和可选原因的 KeyHold 错误。"
+    },
+    "go.types.KeyHoldError.fields.Code": {
+      "source": "Field Code of KeyHoldError.",
+      "translation": "KeyHoldError 的 Code 字段。"
+    },
+    "go.types.KeyHoldError.fields.Message": {
+      "source": "Field Message of KeyHoldError.",
+      "translation": "KeyHoldError 的 Message 字段。"
+    },
+    "go.types.KeyHoldError.fields.Cause": {
+      "source": "Field Cause of KeyHoldError.",
+      "translation": "KeyHoldError 的 Cause 字段。"
+    },
+    "go.types.KeyHoldError.methods.Error": {
+      "source": "Method Error of KeyHoldError.",
+      "translation": "KeyHoldError 的 Error 方法。"
+    },
+    "go.types.KeyHoldError.methods.Unwrap": {
+      "source": "Method Unwrap of KeyHoldError.",
+      "translation": "KeyHoldError 的 Unwrap 方法。"
+    },
+    "go.types.KeyHoldError.methods.Is": {
+      "source": "Method Is of KeyHoldError.",
+      "translation": "KeyHoldError 的 Is 方法。"
+    },
+    "go.functions.E": {
+      "source": "E constructs a KeyHoldError with an optional underlying cause.",
+      "translation": "构造带有可选底层原因的 KeyHoldError。"
+    },
+    "go.functions.E.parameters.code": {
+      "source": "Parameter code of E.",
+      "translation": "E 的 code 参数。"
+    },
+    "go.functions.E.parameters.message": {
+      "source": "Parameter message of E.",
+      "translation": "E 的 message 参数。"
+    },
+    "go.functions.E.parameters.cause": {
+      "source": "Parameter cause of E.",
+      "translation": "E 的 cause 参数。"
+    },
+    "go.functions.ErrorCodeOf": {
+      "source": "ErrorCodeOf returns the first KeyHold error code in an unwrap chain.",
+      "translation": "从错误包装链中返回第一个 KeyHold 错误码。"
+    },
+    "go.functions.ErrorCodeOf.parameters.err": {
+      "source": "Parameter err of ErrorCodeOf.",
+      "translation": "ErrorCodeOf 的 err 参数。"
+    },
+    "go.types.KeyDerivation": {
+      "source": "KeyDerivation describes the password-based key derivation section.",
+      "translation": "表示经过验证的密码派生区段。"
+    },
+    "go.types.KeyDerivation.fields.Algorithm": {
+      "source": "Field Algorithm of KeyDerivation.",
+      "translation": "KeyDerivation 的 Algorithm 字段。"
+    },
+    "go.types.KeyDerivation.fields.PasswordEncoding": {
+      "source": "Field PasswordEncoding of KeyDerivation.",
+      "translation": "KeyDerivation 的 PasswordEncoding 字段。"
+    },
+    "go.types.KeyDerivation.fields.Iterations": {
+      "source": "Field Iterations of KeyDerivation.",
+      "translation": "KeyDerivation 的 Iterations 字段。"
+    },
+    "go.types.KeyDerivation.fields.OutputLengthBits": {
+      "source": "Field OutputLengthBits of KeyDerivation.",
+      "translation": "KeyDerivation 的 OutputLengthBits 字段。"
+    },
+    "go.types.KeyDerivation.fields.SaltB64Url": {
+      "source": "Field SaltB64Url of KeyDerivation.",
+      "translation": "KeyDerivation 的 SaltB64Url 字段。"
+    },
+    "go.types.Cipher": {
+      "source": "Cipher describes the AES-GCM section.",
+      "translation": "表示经过验证的 AES-GCM 密文区段。"
+    },
+    "go.types.Cipher.fields.Algorithm": {
+      "source": "Field Algorithm of Cipher.",
+      "translation": "Cipher 的 Algorithm 字段。"
+    },
+    "go.types.Cipher.fields.KeyLengthBits": {
+      "source": "Field KeyLengthBits of Cipher.",
+      "translation": "Cipher 的 KeyLengthBits 字段。"
+    },
+    "go.types.Cipher.fields.IVB64Url": {
+      "source": "Field IVB64Url of Cipher.",
+      "translation": "Cipher 的 IVB64Url 字段。"
+    },
+    "go.types.Cipher.fields.TagLengthBits": {
+      "source": "Field TagLengthBits of Cipher.",
+      "translation": "Cipher 的 TagLengthBits 字段。"
+    },
+    "go.types.Cipher.fields.CiphertextAndTagB64Url": {
+      "source": "Field CiphertextAndTagB64Url of Cipher.",
+      "translation": "Cipher 的 CiphertextAndTagB64Url 字段。"
+    },
+    "go.types.Document": {
+      "source": "Document is a complete, validated KeyHold keymaster v2 document.",
+      "translation": "表示完整、已验证的 KeyHold 文档。"
+    },
+    "go.types.Document.fields.Format": {
+      "source": "Field Format of Document.",
+      "translation": "Document 的 Format 字段。"
+    },
+    "go.types.Document.fields.Version": {
+      "source": "Field Version of Document.",
+      "translation": "Document 的 Version 字段。"
+    },
+    "go.types.Document.fields.Label": {
+      "source": "Field Label of Document.",
+      "translation": "Document 的 Label 字段。"
+    },
+    "go.types.Document.fields.PublicKeyHex": {
+      "source": "Field PublicKeyHex of Document.",
+      "translation": "Document 的 PublicKeyHex 字段。"
+    },
+    "go.types.Document.fields.KeyDerivation": {
+      "source": "Field KeyDerivation of Document.",
+      "translation": "Document 的 KeyDerivation 字段。"
+    },
+    "go.types.Document.fields.Cipher": {
+      "source": "Field Cipher of Document.",
+      "translation": "Document 的 Cipher 字段。"
+    },
+    "go.types.KeyDerivationParameters": {
+      "source": "KeyDerivationParameters contains explicit KDF parameters for export.",
+      "translation": "定义 PBKDF2 导出所需的显式参数。"
+    },
+    "go.types.KeyDerivationParameters.fields.Algorithm": {
+      "source": "Field Algorithm of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 Algorithm 字段。"
+    },
+    "go.types.KeyDerivationParameters.fields.PasswordEncoding": {
+      "source": "Field PasswordEncoding of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 PasswordEncoding 字段。"
+    },
+    "go.types.KeyDerivationParameters.fields.Iterations": {
+      "source": "Field Iterations of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 Iterations 字段。"
+    },
+    "go.types.KeyDerivationParameters.fields.OutputLengthBits": {
+      "source": "Field OutputLengthBits of KeyDerivationParameters.",
+      "translation": "KeyDerivationParameters 的 OutputLengthBits 字段。"
+    },
+    "go.types.CipherParameters": {
+      "source": "CipherParameters contains explicit cipher parameters for export.",
+      "translation": "定义 AES-GCM 导出所需的显式参数。"
+    },
+    "go.types.CipherParameters.fields.Algorithm": {
+      "source": "Field Algorithm of CipherParameters.",
+      "translation": "CipherParameters 的 Algorithm 字段。"
+    },
+    "go.types.CipherParameters.fields.KeyLengthBits": {
+      "source": "Field KeyLengthBits of CipherParameters.",
+      "translation": "CipherParameters 的 KeyLengthBits 字段。"
+    },
+    "go.types.CipherParameters.fields.TagLengthBits": {
+      "source": "Field TagLengthBits of CipherParameters.",
+      "translation": "CipherParameters 的 TagLengthBits 字段。"
+    },
+    "go.types.Parameters": {
+      "source": "Parameters contains the complete explicit export parameter set.",
+      "translation": "表示 Go SDK 导出所需的完整参数集。"
+    },
+    "go.types.Parameters.fields.KeyDerivation": {
+      "source": "Field KeyDerivation of Parameters.",
+      "translation": "Parameters 的 KeyDerivation 字段。"
+    },
+    "go.types.Parameters.fields.Cipher": {
+      "source": "Field Cipher of Parameters.",
+      "translation": "Parameters 的 Cipher 字段。"
+    },
+    "go.types.EncryptedKDFInput": {
+      "source": "EncryptedKDFInput contains an already-derived document KDF section and raw salt.",
+      "translation": "表示已派生的文档 KDF 区段和原始盐。"
+    },
+    "go.types.EncryptedKDFInput.fields.Algorithm": {
+      "source": "Field Algorithm of EncryptedKDFInput.",
+      "translation": "EncryptedKDFInput 的 Algorithm 字段。"
+    },
+    "go.types.EncryptedKDFInput.fields.PasswordEncoding": {
+      "source": "Field PasswordEncoding of EncryptedKDFInput.",
+      "translation": "EncryptedKDFInput 的 PasswordEncoding 字段。"
+    },
+    "go.types.EncryptedKDFInput.fields.Iterations": {
+      "source": "Field Iterations of EncryptedKDFInput.",
+      "translation": "EncryptedKDFInput 的 Iterations 字段。"
+    },
+    "go.types.EncryptedKDFInput.fields.OutputLengthBits": {
+      "source": "Field OutputLengthBits of EncryptedKDFInput.",
+      "translation": "EncryptedKDFInput 的 OutputLengthBits 字段。"
+    },
+    "go.types.EncryptedKDFInput.fields.Salt": {
+      "source": "Field Salt of EncryptedKDFInput.",
+      "translation": "EncryptedKDFInput 的 Salt 字段。"
+    },
+    "go.types.EncryptedCipherInput": {
+      "source": "EncryptedCipherInput contains an already-encrypted document cipher section.",
+      "translation": "表示已加密的文档 cipher 区段。"
+    },
+    "go.types.EncryptedCipherInput.fields.Algorithm": {
+      "source": "Field Algorithm of EncryptedCipherInput.",
+      "translation": "EncryptedCipherInput 的 Algorithm 字段。"
+    },
+    "go.types.EncryptedCipherInput.fields.KeyLengthBits": {
+      "source": "Field KeyLengthBits of EncryptedCipherInput.",
+      "translation": "EncryptedCipherInput 的 KeyLengthBits 字段。"
+    },
+    "go.types.EncryptedCipherInput.fields.IV": {
+      "source": "Field IV of EncryptedCipherInput.",
+      "translation": "EncryptedCipherInput 的 IV 字段。"
+    },
+    "go.types.EncryptedCipherInput.fields.TagLengthBits": {
+      "source": "Field TagLengthBits of EncryptedCipherInput.",
+      "translation": "EncryptedCipherInput 的 TagLengthBits 字段。"
+    },
+    "go.types.EncryptedCipherInput.fields.CiphertextAndTag": {
+      "source": "Field CiphertextAndTag of EncryptedCipherInput.",
+      "translation": "EncryptedCipherInput 的 CiphertextAndTag 字段。"
+    },
+    "go.types.EncryptedStateInput": {
+      "source": "EncryptedStateInput describes encrypted state that can be serialized without decryption.",
+      "translation": "表示无需解密即可序列化的已加密状态。"
+    },
+    "go.types.EncryptedStateInput.fields.Label": {
+      "source": "Field Label of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 Label 字段。"
+    },
+    "go.types.EncryptedStateInput.fields.PublicKeyHex": {
+      "source": "Field PublicKeyHex of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 PublicKeyHex 字段。"
+    },
+    "go.types.EncryptedStateInput.fields.KeyDerivation": {
+      "source": "Field KeyDerivation of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 KeyDerivation 字段。"
+    },
+    "go.types.EncryptedStateInput.fields.Cipher": {
+      "source": "Field Cipher of EncryptedStateInput.",
+      "translation": "EncryptedStateInput 的 Cipher 字段。"
+    },
+    "go.types.PrivateKeyExportInput": {
+      "source": "PrivateKeyExportInput describes plaintext private-key export input.",
+      "translation": "表示创建加密文档所需的明文私钥输入。"
+    },
+    "go.types.PrivateKeyExportInput.fields.PrivateKey": {
+      "source": "Field PrivateKey of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 PrivateKey 字段。"
+    },
+    "go.types.PrivateKeyExportInput.fields.Password": {
+      "source": "Field Password of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 Password 字段。"
+    },
+    "go.types.PrivateKeyExportInput.fields.Label": {
+      "source": "Field Label of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 Label 字段。"
+    },
+    "go.types.PrivateKeyExportInput.fields.Parameters": {
+      "source": "Field Parameters of PrivateKeyExportInput.",
+      "translation": "PrivateKeyExportInput 的 Parameters 字段。"
+    },
+    "go.types.UnlockResult": {
+      "source": "UnlockResult contains the private key and its matching compressed public key.",
+      "translation": "表示解锁后恢复的私钥和匹配公钥。"
+    },
+    "go.types.UnlockResult.fields.PrivateKey": {
+      "source": "Field PrivateKey of UnlockResult.",
+      "translation": "UnlockResult 的 PrivateKey 字段。"
+    },
+    "go.types.UnlockResult.fields.PublicKeyHex": {
+      "source": "Field PublicKeyHex of UnlockResult.",
+      "translation": "UnlockResult 的 PublicKeyHex 字段。"
+    },
+    "go.types.DocumentSummary": {
+      "source": "DocumentSummary contains the non-secret metadata of a document.",
+      "translation": "表示文档的公开、非秘密摘要。"
+    },
+    "go.types.DocumentSummary.fields.Format": {
+      "source": "Field Format of DocumentSummary.",
+      "translation": "DocumentSummary 的 Format 字段。"
+    },
+    "go.types.DocumentSummary.fields.Version": {
+      "source": "Field Version of DocumentSummary.",
+      "translation": "DocumentSummary 的 Version 字段。"
+    },
+    "go.types.DocumentSummary.fields.Label": {
+      "source": "Field Label of DocumentSummary.",
+      "translation": "DocumentSummary 的 Label 字段。"
+    },
+    "go.types.DocumentSummary.fields.PublicKeyHex": {
+      "source": "Field PublicKeyHex of DocumentSummary.",
+      "translation": "DocumentSummary 的 PublicKeyHex 字段。"
+    },
+    "go.functions.Validate": {
+      "source": "Validate checks the structure and cryptographic public fields of a document.",
+      "translation": "检查文档结构和密码学公开字段。"
+    },
+    "go.functions.Validate.parameters.document": {
+      "source": "Parameter document of Validate.",
+      "translation": "Validate 的 document 参数。"
+    },
+    "go.functions.Parse": {
+      "source": "Parse decodes JSON bytes and validates the resulting document.",
+      "translation": "解析 JSON 字节并验证所得文档。"
+    },
+    "go.functions.Parse.parameters.data": {
+      "source": "Parameter data of Parse.",
+      "translation": "Parse 的 data 参数。"
+    },
+    "go.functions.Serialize": {
+      "source": "Serialize validates and encodes a document as canonical JSON.",
+      "translation": "验证文档并编码为规范 JSON。"
+    },
+    "go.functions.Serialize.parameters.document": {
+      "source": "Parameter document of Serialize.",
+      "translation": "Serialize 的 document 参数。"
+    },
+    "go.functions.Summary": {
+      "source": "Summary returns the non-secret metadata of a validated document.",
+      "translation": "返回已验证文档的非秘密元数据。"
+    },
+    "go.functions.Summary.parameters.document": {
+      "source": "Parameter document of Summary.",
+      "translation": "Summary 的 document 参数。"
+    },
+    "go.functions.Unlock": {
+      "source": "Unlock decrypts a document and verifies that the recovered private key matches its public key.",
+      "translation": "解密文档并确认恢复的私钥匹配公钥。"
+    },
+    "go.functions.Unlock.parameters.document": {
+      "source": "Parameter document of Unlock.",
+      "translation": "Unlock 的 document 参数。"
+    },
+    "go.functions.Unlock.parameters.password": {
+      "source": "Parameter password of Unlock.",
+      "translation": "Unlock 的 password 参数。"
+    },
+    "go.functions.RecommendedParameters": {
+      "source": "RecommendedParameters returns the recommended explicit export parameters.",
+      "translation": "返回推荐的显式导出参数。"
+    },
+    "go.functions.ExportEncryptedState": {
+      "source": "ExportEncryptedState serializes state that is already encrypted using KeyHold semantics.",
+      "translation": "序列化已经按 KeyHold 语义加密的状态。"
+    },
+    "go.functions.ExportEncryptedState.parameters.input": {
+      "source": "Parameter input of ExportEncryptedState.",
+      "translation": "ExportEncryptedState 的 input 参数。"
+    },
+    "go.functions.ExportPrivateKey": {
+      "source": "ExportPrivateKey encrypts a private key with a password and returns a complete JSON document.",
+      "translation": "使用密码加密私钥并返回完整 JSON 文档。"
+    },
+    "go.functions.ExportPrivateKey.parameters.input": {
+      "source": "Parameter input of ExportPrivateKey.",
+      "translation": "ExportPrivateKey 的 input 参数。"
+    },
+    "go.functions.PublicKeyFromPrivate": {
+      "source": "PublicKeyFromPrivate derives a compressed secp256k1 public key.",
+      "translation": "从私钥派生压缩格式的 secp256k1 公钥。"
+    },
+    "go.functions.PublicKeyFromPrivate.parameters.privateKey": {
+      "source": "Parameter privateKey of PublicKeyFromPrivate.",
+      "translation": "PublicKeyFromPrivate 的 privateKey 参数。"
+    },
+    "go.functions.ValidatePublicKeyHex": {
+      "source": "ValidatePublicKeyHex validates and decodes a compressed secp256k1 public key.",
+      "translation": "验证并解码压缩格式的 secp256k1 公钥。"
+    },
+    "go.functions.ValidatePublicKeyHex.parameters.value": {
+      "source": "Parameter value of ValidatePublicKeyHex.",
+      "translation": "ValidatePublicKeyHex 的 value 参数。"
+    }
+  },
+  "categories": {
+    "Create & export": "创建与导出",
+    "Read & validate": "读取与验证",
+    "Unlock": "解锁",
+    "Inspect": "检查",
+    "Failure handling": "失败处理"
+  },
+  "operations": {
+    "export-private-key": {
+      "source": {
+        "title": "Export private key",
+        "purpose": "Encrypt a private key with a password and create a complete document."
+      },
+      "translation": {
+        "title": "导出私钥",
+        "purpose": "使用密码加密私钥并创建完整文档。"
+      }
+    },
+    "export-encrypted-state": {
+      "source": {
+        "title": "Export encrypted state",
+        "purpose": "Serialize encrypted state without decrypting the private key."
+      },
+      "translation": {
+        "title": "导出已加密状态",
+        "purpose": "序列化已经加密的状态，无需再次解密私钥。"
+      }
+    },
+    "parse-document": {
+      "source": {
+        "title": "Parse document",
+        "purpose": "Read JSON text or bytes and validate the resulting document."
+      },
+      "translation": {
+        "title": "解析文档",
+        "purpose": "读取 JSON 文本或字节并验证所得文档。"
+      }
+    },
+    "validate-document": {
+      "source": {
+        "title": "Validate document",
+        "purpose": "Validate an in-memory value and return the normalized document."
+      },
+      "translation": {
+        "title": "验证文档",
+        "purpose": "验证内存中的值并返回规范化文档。"
+      }
+    },
+    "serialize-document": {
+      "source": {
+        "title": "Serialize document",
+        "purpose": "Write a validated document as canonical JSON."
+      },
+      "translation": {
+        "title": "序列化文档",
+        "purpose": "将已验证的文档写为规范 JSON。"
+      }
+    },
+    "unlock-document": {
+      "source": {
+        "title": "Unlock document",
+        "purpose": "Decrypt the private key and verify that it matches the document public key."
+      },
+      "translation": {
+        "title": "解锁文档",
+        "purpose": "解密私钥并确认它与文档中的公钥匹配。"
+      }
+    },
+    "summary": {
+      "source": {
+        "title": "Read summary",
+        "purpose": "Read format, version, label, and public-key metadata without secrets."
+      },
+      "translation": {
+        "title": "读取摘要",
+        "purpose": "读取格式、版本、标签和公钥元数据，不暴露秘密。"
+      }
+    },
+    "errors": {
+      "source": {
+        "title": "Handle errors",
+        "purpose": "Handle predictable failures through stable error codes."
+      },
+      "translation": {
+        "title": "处理错误",
+        "purpose": "通过稳定错误码处理可预期的失败。"
+      }
+    }
+  }
+}

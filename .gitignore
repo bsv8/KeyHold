@@ -39,6 +39,12 @@ build/Release
 
 # Dependency directories
 node_modules/
+docs-site/build/
+docs-site/.docusaurus/
+docs-site/.api-metadata/
+docs-site/docs/api/
+docs-site/src/data/operations.generated.json
+docs-site/i18n/zh-CN/docusaurus-plugin-content-docs/current/api/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -146,4 +152,3 @@ vite.config.ts.timestamp-*
 typescript/node_modules/
 typescript/dist/
 docs/api/typescript/
-docs-site/site/api/
