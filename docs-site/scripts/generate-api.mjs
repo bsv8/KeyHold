@@ -48,7 +48,7 @@ async function typedocMetadata() {
   const out = path.join(metadataDir, 'typescript.json');
   await fs.mkdir(metadataDir, {recursive: true});
   const typedoc = path.join(site, 'node_modules/typedoc/dist/cli.js');
-  await run(process.execPath, [typedoc, '--entryPoints', path.join(root, 'typescript/src/index.ts'), '--entryPointStrategy', 'resolve', '--tsconfig', path.join(root, 'typescript/tsconfig.json'), '--json', out, '--excludePrivate', '--excludeProtected', '--excludeInternal'], {cwd: site});
+  await run(process.execPath, [typedoc, '--entryPoints', path.join(root, 'typescript/src/index.ts'), '--entryPointStrategy', 'resolve', '--tsconfig', path.join(root, 'typescript/tsconfig.json'), '--skipErrorChecking', '--json', out, '--excludePrivate', '--excludeProtected', '--excludeInternal'], {cwd: site});
   const json = JSON.parse(await fs.readFile(out, 'utf8'));
   const wanted = new Set([4, 32, 64, 128, 256, 4194304]);
   const reflections = [];

@@ -33,3 +33,5 @@ TypeScript API metadata is produced by TypeDoc from `../typescript/src/index.ts`
 `DOCS_URL` and `DOCS_BASE_URL` configure the canonical URL and static-host base path. `DOCS_GITHUB_OWNER`, `DOCS_GITHUB_REPO`, `DOCS_GITHUB_BRANCH`, and `DOCS_DEPLOY_BRANCH` configure repository edit links and deployment metadata. Docusaurus builds both `en` and `zh-CN` locales, with broken links configured to fail the build.
 
 The site intentionally does not commit `build/`, `.docusaurus/`, `node_modules/`, or generated API output. Use the root `make docs-site` target for CI-compatible installation and build.
+
+Cloudflare Pages can use `docs-site` as the root directory and `npm run build` as its build command. API generation uses TypeDoc's `--skipErrorChecking` against the public TypeScript entrypoint, so the build does not require `typescript/node_modules` or a separate SDK install; Go metadata is generated with the standard-library AST helper.
