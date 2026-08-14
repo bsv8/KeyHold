@@ -10,7 +10,7 @@ const root = path.resolve(site, '..');
 const marker = '<!-- GENERATED FILE. Edit SDK comments or the translation catalog instead. -->';
 const metadataDir = path.join(site, '.api-metadata');
 const catalogPath = path.join(site, 'i18n/api.zh-CN.json');
-const slug = (s) => s.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`).replace(/^-/, '');
+const slug = (value) => String(value).replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2').replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/[_\s]+/g, '-').replace(/[^A-Za-z0-9-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').toLowerCase();
 const clean = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
 const summary = (comment, fallback = 'Public KeyHold SDK declaration.') => (comment?.summary ?? []).map((x) => x.text ?? '').join('').trim() || fallback;
 const typeText = (t) => {
@@ -76,14 +76,14 @@ const md = (api, sdk, locale, catalog, known) => {
   const fields = api.fields?.length ? `\n## ${zh ? '属性' : 'Properties'}\n\n| ${zh ? '名称' : 'Name'} | ${zh ? '类型' : 'Type'} | ${zh ? '说明' : 'Description'} |\n| --- | --- | --- |\n${api.fields.map((f) => `| \`${f.name}\` | ${typeLink(f.type, sdk, known)} | ${zh ? (catalog.api?.[`${key}.fields.${f.name}`]?.translation ?? f.summary) : f.summary} |`).join('\n')}\n` : '';
   const methods = api.methods?.length ? `\n## ${zh ? '方法' : 'Methods'}\n\n| ${zh ? '名称' : 'Name'} | ${zh ? '签名' : 'Signature'} | ${zh ? '说明' : 'Description'} |\n| --- | --- | --- |\n${api.methods.map((m) => `| \`${m.name}\` | ${m.signature ?? m.type} | ${zh ? (catalog.api?.[`${key}.methods.${m.name}`]?.translation ?? m.summary) : m.summary} |`).join('\n')}\n` : '';
   const returns = api.returns ? `\n## ${zh ? '返回值' : 'Returns'}\n\n${typeLink(api.returns, sdk, known)}\n` : '';
-  return `${marker}\n---\ntitle: ${title}\nslug: /api/${sdk}/${api.kind}/${slug(api.symbol)}\nsidebar_label: ${title}\n---\n\n# ${title}\n\n\`${api.signature}\`\n\n${zh ? translated : api.summary}\n${params}${returns}${fields}${methods}\n## ${zh ? '来源' : 'Source'}\n\n${zh ? '此页面由 TypeDoc/Go AST 元数据和中文翻译目录生成。标识符、类型、错误码和代码示例保持不译。' : 'This page is generated from SDK source metadata and the translation catalog.'}\n`;
+  return `---\ntitle: ${title}\nslug: /api/${sdk}/${api.kind}/${slug(api.symbol)}\nsidebar_label: ${title}\n---\n\n${marker}\n\n# ${title}\n\n\`${api.signature}\`\n\n${zh ? translated : api.summary}\n${params}${returns}${fields}${methods}\n## ${zh ? '来源' : 'Source'}\n\n${zh ? '此页面由 TypeDoc/Go AST 元数据和中文翻译目录生成。标识符、类型、错误码和代码示例保持不译。' : 'This page is generated from SDK source metadata and the translation catalog.'}\n`;
 };
 async function writeDocs(sdkData, locale) {
   const sdk = sdkData.sdk; const catalog = JSON.parse(await fs.readFile(catalogPath, 'utf8')); const known = new Set(sdkData.apis.filter((a) => a.kind === 'types').map((a) => a.symbol));
   const dir = path.join(site, locale === 'zh-CN' ? `i18n/zh-CN/docusaurus-plugin-content-docs/current/api/${sdk}` : `docs/api/${sdk}`);
   await fs.rm(dir, {recursive: true, force: true}); await fs.mkdir(dir, {recursive: true});
   const zh = locale === 'zh-CN';
-  await fs.writeFile(path.join(dir, 'index.md'), `${marker}\n---\ntitle: ${zh ? 'API 参考' : 'API reference'}\nslug: /api/${sdk}\n---\n\n# ${zh ? 'API 参考' : 'API reference'}\n\n${zh ? '以下页面由 SDK 源码元数据和中文翻译目录生成。' : 'These pages are generated from the SDK source metadata and are the precise contract for each public declaration.'}\n\n${sdkData.apis.map((a) => `- [${a.symbol}](/api/${sdk}/${a.kind}/${slug(a.symbol)}) — ${zh ? (catalog.api?.[`${sdk}.${a.kind}.${a.symbol}`]?.translation ?? a.summary) : a.summary}`).join('\n')}\n`);
+  await fs.writeFile(path.join(dir, 'index.md'), `---\ntitle: ${zh ? 'API 参考' : 'API reference'}\nslug: /api/${sdk}\n---\n\n${marker}\n\n# ${zh ? 'API 参考' : 'API reference'}\n\n${zh ? '以下页面由 SDK 源码元数据和中文翻译目录生成。' : 'These pages are generated from the SDK source metadata and are the precise contract for each public declaration.'}\n\n${sdkData.apis.map((a) => `- [${a.symbol}](/api/${sdk}/${a.kind}/${slug(a.symbol)}) — ${zh ? (catalog.api?.[`${sdk}.${a.kind}.${a.symbol}`]?.translation ?? a.summary) : a.summary}`).join('\n')}\n`);
   const kindLabels = {functions: zh ? '函数' : 'Functions', types: zh ? '类型' : 'Types', classes: zh ? '类' : 'Classes', constants: zh ? '常量' : 'Constants'};
   for (const kind of ['functions', 'types', 'classes', 'constants']) { const kindDir = path.join(dir, kind); await fs.mkdir(kindDir, {recursive: true}); await fs.writeFile(path.join(kindDir, '_category_.json'), JSON.stringify({label: kindLabels[kind], key: `${sdk}-${kind}`})); }
   for (const api of sdkData.apis) { const dirName = path.join(dir, api.kind); await fs.mkdir(dirName, {recursive: true}); await fs.writeFile(path.join(dirName, `${slug(api.symbol)}.md`), md(api, sdk, locale, catalog, known)); }

@@ -5,9 +5,10 @@
   "scripts": {
     "api:generate": "node scripts/generate-api.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
+    "check:static": "node scripts/check-static.mjs",
     "check": "npm run api:generate && npm run check:i18n && tsc --noEmit",
     "dev": "npm run api:generate && npm run check:i18n && docusaurus start",
-    "build": "npm run api:generate && npm run check:i18n && docusaurus build",
+    "build": "npm run api:generate && npm run check:i18n && docusaurus build && npm run check:static",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear"
   },
