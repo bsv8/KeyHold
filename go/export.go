@@ -5,6 +5,7 @@ import (
 	"unicode/utf8"
 )
 
+// RecommendedParameters returns the recommended explicit export parameters.
 func RecommendedParameters() Parameters {
 	return Parameters{KeyDerivation: KeyDerivationParameters{Algorithm: KDFAlgorithm, PasswordEncoding: PasswordEncoding, Iterations: RecommendedIterations, OutputLengthBits: OutputLengthBits}, Cipher: CipherParameters{Algorithm: CipherAlgorithm, KeyLengthBits: KeyLengthBits, TagLengthBits: TagLengthBits}}
 }
@@ -16,6 +17,7 @@ func buildDocument(label, publicKeyHex string, kdf KeyDerivation, cipherValue Ci
 	return document, nil
 }
 
+// ExportEncryptedState serializes state that is already encrypted using KeyHold semantics.
 func ExportEncryptedState(input EncryptedStateInput) ([]byte, error) {
 	parameters := Parameters{KeyDerivation: KeyDerivationParameters{Algorithm: input.KeyDerivation.Algorithm, PasswordEncoding: input.KeyDerivation.PasswordEncoding, Iterations: input.KeyDerivation.Iterations, OutputLengthBits: input.KeyDerivation.OutputLengthBits}, Cipher: CipherParameters{Algorithm: input.Cipher.Algorithm, KeyLengthBits: input.Cipher.KeyLengthBits, TagLengthBits: input.Cipher.TagLengthBits}}
 	if err := validateParameters(parameters); err != nil {
@@ -34,6 +36,8 @@ func ExportEncryptedState(input EncryptedStateInput) ([]byte, error) {
 	return json.Marshal(document)
 }
 func utf8ValidAndNonEmpty(value string) bool { return value != "" && utf8.ValidString(value) }
+
+// ExportPrivateKey encrypts a private key with a password and returns a complete JSON document.
 func ExportPrivateKey(input PrivateKeyExportInput) ([]byte, error) {
 	salt, err := randomBytes(SaltLengthBytes)
 	if err != nil {

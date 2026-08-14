@@ -2,6 +2,7 @@ package keyhold
 
 import "fmt"
 
+// ErrorCode is a stable category of KeyHold failure.
 type ErrorCode string
 
 func (c ErrorCode) Error() string { return string(c) }
@@ -17,6 +18,7 @@ const (
 	ErrUnlockFailed         ErrorCode = "unlock_failed"
 )
 
+// KeyHoldError is an SDK error with a stable code and optional cause.
 type KeyHoldError struct {
 	Code    ErrorCode
 	Message string
@@ -40,9 +42,13 @@ func (e *KeyHoldError) Is(target error) bool {
 		return false
 	}
 }
+
+// E constructs a KeyHoldError with an optional underlying cause.
 func E(code ErrorCode, message string, cause error) *KeyHoldError {
 	return &KeyHoldError{Code: code, Message: message, Cause: cause}
 }
+
+// ErrorCodeOf returns the first KeyHold error code in an unwrap chain.
 func ErrorCodeOf(err error) ErrorCode {
 	for err != nil {
 		if e, ok := err.(*KeyHoldError); ok {

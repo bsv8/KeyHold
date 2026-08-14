@@ -1,3 +1,4 @@
+/** Stable error codes exposed by the KeyHold SDK. */
 export const ERROR_CODES = [
   "invalid_json",
   "unsupported_format",
@@ -9,8 +10,10 @@ export const ERROR_CODES = [
   "unlock_failed",
 ] as const;
 
+/** A stable category of KeyHold failure. */
 export type ErrorCode = (typeof ERROR_CODES)[number];
 
+/** Error thrown by public SDK operations. */
 export class KeyHoldError extends Error {
   readonly name = "KeyHoldError";
   constructor(
@@ -22,6 +25,7 @@ export class KeyHoldError extends Error {
   }
 }
 
+/** Construct a KeyHold error while preserving an optional underlying cause. */
 export function keyHoldError(
   code: ErrorCode,
   message: string = code,
@@ -34,6 +38,7 @@ export function keyHoldError(
   );
 }
 
+/** Return true when a value is a KeyHold SDK error. */
 export function isKeyHoldError(value: unknown): value is KeyHoldError {
   return value instanceof KeyHoldError;
 }

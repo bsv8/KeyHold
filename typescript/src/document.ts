@@ -8,9 +8,11 @@ import { keyHoldError } from "./errors.js";
 
 export { parseDocument };
 
+/** Serialize a validated document to canonical JSON. */
 export function serializeDocument(document: Document): string {
   return JSON.stringify(validateDocument(document));
 }
+/** Return the non-secret metadata of a validated document. */
 export function summary(document: Document): DocumentSummary {
   const value = validateDocument(document);
   return {
@@ -21,6 +23,7 @@ export function summary(document: Document): DocumentSummary {
   };
 }
 
+/** Decrypt and validate the private key contained in a document. */
 export async function unlockDocument(
   document: Document,
   password: string,

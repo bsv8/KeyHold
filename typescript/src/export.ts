@@ -32,6 +32,7 @@ import { publicKeyFromPrivate } from "./secp256k1.js";
 import { derivePassword } from "./password.js";
 import { encryptAesGcm, randomBytes } from "./aesGcm.js";
 
+/** Return the SDK’s recommended explicit export parameters. */
 export function recommendedParameters(): RecommendedParameters {
   return {
     keyDerivation: {
@@ -85,6 +86,7 @@ function buildDocument(
   });
 }
 
+/** Serialize state that is already encrypted using KeyHold semantics. */
 export function exportEncryptedState(input: EncryptedStateInput): string {
   checkParameters(input);
   if (input.label.length === 0 || !hasUnicodeScalarSequence(input.label))
@@ -120,6 +122,7 @@ export function exportEncryptedState(input: EncryptedStateInput): string {
   );
 }
 
+/** Encrypt a private key with a password and return a complete JSON document. */
 export async function exportPrivateKey(
   input: PrivateKeyExportInput,
 ): Promise<string> {

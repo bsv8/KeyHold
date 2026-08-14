@@ -145,3 +145,5 @@ vite.config.ts.timestamp-*
 # KeyHold local dependencies and build output
 typescript/node_modules/
 typescript/dist/
+docs/api/typescript/
+docs-site/site/api/

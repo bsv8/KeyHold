@@ -348,6 +348,8 @@ func validateCipherValue(c Cipher) error {
 	}
 	return nil
 }
+
+// Validate checks the structure and cryptographic public fields of a document.
 func Validate(document Document) error {
 	if document.Format != Format {
 		return E(ErrUnsupportedFormat, "format must be keymaster", nil)
@@ -370,6 +372,7 @@ func Validate(document Document) error {
 	return validateCipherValue(document.Cipher)
 }
 
+// Parse decodes JSON bytes and validates the resulting document.
 func Parse(data []byte) (Document, error) {
 	if err := strictJSON(data); err != nil {
 		return Document{}, E(ErrInvalidJSON, "document is not valid JSON", err)

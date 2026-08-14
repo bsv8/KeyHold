@@ -5,12 +5,15 @@ import (
 	"unicode/utf8"
 )
 
+// Serialize validates and encodes a document as canonical JSON.
 func Serialize(document Document) ([]byte, error) {
 	if err := Validate(document); err != nil {
 		return nil, err
 	}
 	return json.Marshal(document)
 }
+
+// Summary returns the non-secret metadata of a validated document.
 func Summary(document Document) (DocumentSummary, error) {
 	if err := Validate(document); err != nil {
 		return DocumentSummary{}, err
@@ -25,6 +28,8 @@ func unlockResult(document Document, plaintext []byte) (*UnlockResult, error) {
 	}
 	return &UnlockResult{PrivateKey: plaintext, PublicKeyHex: EncodeHex(publicKey)}, nil
 }
+
+// Unlock decrypts a document and verifies that the recovered private key matches its public key.
 func Unlock(document Document, password string) (*UnlockResult, error) {
 	if err := Validate(document); err != nil {
 		return nil, err

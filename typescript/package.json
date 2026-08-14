@@ -6,7 +6,7 @@
   "type": "module",
   "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
   "files": ["dist", "README.md", "LICENSE"],
-  "scripts": { "typecheck": "tsc -p tsconfig.json --noEmit", "build": "tsc -p tsconfig.build.json", "test": "vitest run", "fmt-check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'" },
+  "scripts": { "typecheck": "tsc -p tsconfig.json --noEmit", "build": "tsc -p tsconfig.build.json", "docs": "typedoc", "test": "vitest run", "fmt-check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'" },
   "dependencies": { "@noble/curves": "^2.0.0" },
-  "devDependencies": { "@types/node": "^22.0.0", "prettier": "^3.0.0", "typescript": "^5.7.0", "vitest": "^3.0.0" }
+  "devDependencies": { "@types/node": "^22.0.0", "prettier": "^3.0.0", "typedoc": "^0.28.0", "typescript": "^5.7.0", "vitest": "^3.0.0" }
 }

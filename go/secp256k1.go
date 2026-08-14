@@ -5,6 +5,7 @@ import (
 	"math/big"
 )
 
+// PublicKeyFromPrivate derives a compressed secp256k1 public key.
 func PublicKeyFromPrivate(privateKey []byte) ([]byte, error) {
 	if len(privateKey) != PrivateKeyLengthBytes {
 		return nil, E(ErrInvalidPrivateKey, "private key must be 32 bytes", nil)
@@ -16,6 +17,8 @@ func PublicKeyFromPrivate(privateKey []byte) ([]byte, error) {
 	key := secp.PrivKeyFromBytes(privateKey)
 	return key.PubKey().SerializeCompressed(), nil
 }
+
+// ValidatePublicKeyHex validates and decodes a compressed secp256k1 public key.
 func ValidatePublicKeyHex(value string) ([]byte, error) {
 	bytes, err := DecodeHex(value, "publicKeyHex")
 	if err != nil {

@@ -177,6 +177,7 @@ function cipher(value: unknown): Cipher {
   };
 }
 
+/** Validate an in-memory value and return the normalized KeyHold document. */
 export function validateDocument(value: unknown): Document {
   const d = exact(
     value,
@@ -337,6 +338,7 @@ function scanJson(text: string): void {
   if (index !== text.length) fail();
 }
 
+/** Parse JSON text or UTF-8 bytes and validate the resulting document. */
 export function parseDocument(input: string | Uint8Array): Document {
   let text: string;
   if (input instanceof Uint8Array) {

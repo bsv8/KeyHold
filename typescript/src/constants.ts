@@ -1,4 +1,6 @@
+/** The KeyHold document format discriminator. */
 export const FORMAT = "keymaster" as const;
+/** The supported KeyHold document version. */
 export const VERSION = 2 as const;
 export const KDF_ALGORITHM = "pbkdf2-hmac-sha-256" as const;
 export const PASSWORD_ENCODING = "utf-8" as const;
@@ -8,6 +10,7 @@ export const OUTPUT_LENGTH_BITS = 256 as const;
 export const TAG_LENGTH_BITS = 128 as const;
 export const MIN_ITERATIONS = 1 as const;
 export const MAX_ITERATIONS = 2_147_483_647 as const;
+/** The recommended PBKDF2 iteration count for new exports. */
 export const RECOMMENDED_ITERATIONS = 600_000 as const;
 export const SALT_LENGTH_BYTES = 16 as const;
 export const IV_LENGTH_BYTES = 12 as const;
