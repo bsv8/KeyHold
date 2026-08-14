@@ -1,0 +1,18 @@
+{
+  "name": "keyhold-docs",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "api:generate": "typedoc --options typedoc.json",
+    "dev": "npm run api:generate && vitepress dev site",
+    "build": "npm run api:generate && vitepress build site",
+    "preview": "vitepress preview site"
+  },
+  "devDependencies": {
+    "typedoc": "0.28.20",
+    "typedoc-plugin-markdown": "4.12.0",
+    "typedoc-vitepress-theme": "1.1.3",
+    "vitepress": "1.6.4"
+  }
+}
